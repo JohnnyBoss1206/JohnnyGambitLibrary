@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 
-UENUM()
-enum class ECOND_TARGET : uint8
+//UENUM(BlueprintType)
+enum class EGAMBIT_TARGET : uint8
 {
 	NONE,
 	OPPOSITION,
@@ -13,3 +13,16 @@ enum class ECOND_TARGET : uint8
 	SELF_PT,
 	FIELD
 };
+
+enum class EGAMBIT_COND : uint8
+{
+	NONE,
+	LOWER,
+	HIGHER,
+	EQUALS,
+	INEQUALS,
+	MAX,
+	MIN
+};
+
+

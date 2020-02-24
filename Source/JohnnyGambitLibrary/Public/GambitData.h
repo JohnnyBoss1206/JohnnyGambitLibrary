@@ -6,6 +6,9 @@
 #include "UObject/NoExportTypes.h"
 #include "GambitData.generated.h"
 
+enum EGAMBIT_TARGET;
+enum EGAMBIT_COND;
+
 /**
  * 
  */
@@ -14,6 +17,11 @@ class JOHNNYGAMBITLIBRARY_API UGambitData : public UObject
 {
 	GENERATED_BODY()
 private:
-	FString condition;
+	EGAMBIT_TARGET target;
+	EGAMBIT_COND formula;
+
+
+	FString parameterTypes;
+
 	TFunction<void(void)> action;
 };
