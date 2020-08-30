@@ -20,9 +20,6 @@ public:
 	TArray<TSubclassOf<class UAICondition>> actionConditionClassList;
 
 	UPROPERTY(EditAnywhere, Category = "Gambit AI")
-	TArray<TSubclassOf<class UAICondition>> targetingConditionClassList;
-
-	UPROPERTY(EditAnywhere, Category = "Gambit AI")
 	FName ActionID;
 
 	UPROPERTY(EditAnywhere, Category = "Gambit AI")
