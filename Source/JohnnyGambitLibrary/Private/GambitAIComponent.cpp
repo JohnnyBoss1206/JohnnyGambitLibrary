@@ -45,7 +45,7 @@ void UGambitAIComponent::InitializeAI(UDataTable* actionList)
 			TArray<TSubclassOf<UAICondition>> actCondList = Sheet.actionConditionClassList;
 			for (auto condClass : actCondList)
 			{
-				UAICondition* condInstance = NewObject<UAICondition>(condClass);
+				UAICondition* condInstance = NewObject<UAICondition>(this,condClass);
 				if (condInstance != nullptr)
 				{
 					info.aiConditions.Add(condInstance);
@@ -74,10 +74,11 @@ void UGambitAIComponent::ThinkAction(const UGambitAIParameter* my,const TArray<U
 			break;
 		currentPriority = action.priority;
 		lotTable.Add(action);
-
-		for (UAICondition* cond : action.aiConditions)
+		//設定されている全ての条件がTRUEだったら次のアクションへ
+		for (int i =0 ;i < action.aiConditions.Num(); i++)
 		{
-			if (!cond->DoAICondition(my, targetArray))
+			UAICondition& cond = *action.aiConditions[i];
+			if (!cond.DoGambitAICondition(my, targetArray))
 			{
 				lotTable.Remove(action);
 				break;
@@ -89,6 +90,7 @@ void UGambitAIComponent::ThinkAction(const UGambitAIParameter* my,const TArray<U
 		FGambitActionInfo info;
 		info.actionID = TEXT("NONE");
 		currentGambitAction = info;
+		return;
 	}
 	TArray<TPair<int, FGambitActionInfo>> weightList;
 	for (const FGambitActionInfo& action : lotTable)

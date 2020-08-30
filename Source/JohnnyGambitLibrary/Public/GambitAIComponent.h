@@ -61,6 +61,8 @@ public:
 
 	virtual void InitializeAI(class UDataTable* actionList);
 
+	FGambitActionInfo GetCurrentAction()const {return currentGambitAction;}
+
 public:
 	void ThinkAction(const UGambitAIParameter* my, const TArray<class UGambitAIParameter*>& targetArray);
 

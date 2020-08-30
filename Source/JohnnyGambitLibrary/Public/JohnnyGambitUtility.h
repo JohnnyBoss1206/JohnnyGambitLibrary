@@ -46,7 +46,7 @@ public:
 			int weight = pair.Key;
 			T value = pair.Value;
 			total -= weight;
-			if (total <= weight)
+			if (total <= keyWeight)
 				return value;
 			ret = value;
 		}

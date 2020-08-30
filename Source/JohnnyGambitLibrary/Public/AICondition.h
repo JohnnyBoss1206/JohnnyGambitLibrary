@@ -6,15 +6,14 @@
 #include "UObject/NoExportTypes.h"
 #include "AICondition.generated.h"
 
-class UGambitAIComponent;
 /**
  * 
  */
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, BlueprintType)
 class JOHNNYGAMBITLIBRARY_API UAICondition : public UObject
 {
 	GENERATED_BODY()
 public:
-	UFUNCTION(BlueprintImplementableEvent, Category = "AI Condition")
-	bool DoAICondition(const UGambitAIParameter* my,const TArray<UGambitAIParameter*>& targetList);
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "AI Condition")
+	bool DoGambitAICondition(const class UGambitAIParameter* my,const TArray<class UGambitAIParameter*>& targetList);
 };
