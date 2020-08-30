@@ -10,6 +10,7 @@ public class JohnnyGambitLibrary : ModuleRules
 		
 		PublicIncludePaths.AddRange(
 			new string[] {
+                "JohnnyGambitLibrary/Public"
 				// ... add public include paths required here ...
 			}
 			);
@@ -17,6 +18,7 @@ public class JohnnyGambitLibrary : ModuleRules
 		
 		PrivateIncludePaths.AddRange(
 			new string[] {
+                "JohnnyGambitLibrary/Private"
 				// ... add other private include paths required here ...
 			}
 			);
@@ -39,7 +41,7 @@ public class JohnnyGambitLibrary : ModuleRules
 				"Slate",
 				"SlateCore",
 				// ... add private dependencies that you statically link with here ...	
-			}
+            }
 			);
 		
 		
