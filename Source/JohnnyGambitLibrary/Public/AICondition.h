@@ -10,7 +10,7 @@ class UGambitAIComponent;
 /**
  * 
  */
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class JOHNNYGAMBITLIBRARY_API UAICondition : public UObject
 {
 	GENERATED_BODY()
