@@ -38,7 +38,6 @@ void UGambitAIComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAc
 
 void UGambitAIComponent::InitializeAI(UDataTable* actionList)
 {
-	gambitAIParameter = NewObject<UGambitAIParameter>(this);
 	actionTable.Empty();
 	actionList->ForeachRow<FDataTableGambitAISheet>(TEXT(__FILE__), [&](const FName& Index,const FDataTableGambitAISheet& Sheet)
 		{
@@ -63,7 +62,7 @@ void UGambitAIComponent::InitializeAI(UDataTable* actionList)
 		});
 }
 
-void UGambitAIComponent::ThinkAction(const TArray<UGambitAIComponent*>& targetArray)
+void UGambitAIComponent::ThinkAction(const UGambitAIParameter* my,const TArray<UGambitAIParameter*>& targetArray)
 {
 	TArray<FGambitActionInfo> lotTable;
 	int currentPriority = 0;
@@ -78,7 +77,7 @@ void UGambitAIComponent::ThinkAction(const TArray<UGambitAIComponent*>& targetAr
 
 		for (UAICondition* cond : action.aiConditions)
 		{
-			if (!cond->DoActionCondition(this, targetArray))
+			if (!cond->DoAICondition(my, targetArray))
 			{
 				lotTable.Remove(action);
 				break;

@@ -16,5 +16,5 @@ class JOHNNYGAMBITLIBRARY_API UAICondition : public UObject
 	GENERATED_BODY()
 public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "AI Condition")
-	bool DoActionCondition(const UGambitAIComponent* my,const TArray<UGambitAIComponent*>& targetList);
+	bool DoAICondition(const UGambitAIParameter* my,const TArray<UGambitAIParameter*>& targetList);
 };

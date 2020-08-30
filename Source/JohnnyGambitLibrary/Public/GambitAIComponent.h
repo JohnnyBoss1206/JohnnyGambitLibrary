@@ -62,18 +62,11 @@ public:
 	virtual void InitializeAI(class UDataTable* actionList);
 
 public:
-	void ThinkAction(const TArray<UGambitAIComponent*>& targetArray);
-
-public:
-	UFUNCTION(BlueprintCallable, Category = "Gambit AI Component")
-	class UGambitAIParameter* GetAIParameter()const { return gambitAIParameter; }
+	void ThinkAction(const UGambitAIParameter* my, const TArray<class UGambitAIParameter*>& targetArray);
 
 protected:
 	UPROPERTY()
 	TArray<FGambitActionInfo> actionTable;
-	
-	UPROPERTY()
-	class UGambitAIParameter* gambitAIParameter = nullptr;
 
 	UPROPERTY()
 	FGambitActionInfo currentGambitAction;
