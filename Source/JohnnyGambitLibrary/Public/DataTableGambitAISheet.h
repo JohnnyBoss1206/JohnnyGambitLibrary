@@ -7,7 +7,7 @@
 #include "DataTableGambitAISheet.generated.h"
 
 /**
- * 
+ * GambitAI‚Ìİ’è‚ğs‚¤‚½‚ß‚ÌDataTable
  */
 USTRUCT(BlueprintType)
 struct JOHNNYGAMBITLIBRARY_API FDataTableGambitAISheet : public FTableRowBase

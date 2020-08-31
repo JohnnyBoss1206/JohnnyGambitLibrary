@@ -7,7 +7,8 @@
 #include "GambitAIParameter.generated.h"
 
 /**
- * 
+ * GambitAIで条件判定を行う際のパラメータを保持するクラス
+ * このクラスをゲーム内のActorクラスが保持してもらう
  */
 UCLASS()
 class JOHNNYGAMBITLIBRARY_API UGambitAIParameter : public UObject

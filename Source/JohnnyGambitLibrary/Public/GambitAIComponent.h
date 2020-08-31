@@ -41,7 +41,11 @@ public:
 	}
 	
 };
-
+/**
+ * AIの管理を行うComponent
+ * 優先順位などの操作を行う
+ * ゲーム内のActorにアタッチする
+ */
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class JOHNNYGAMBITLIBRARY_API UGambitAIComponent : public UActorComponent
 {
@@ -56,9 +60,6 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
 	virtual void InitializeAI(class UDataTable* actionList);
 
 	FGambitActionInfo GetCurrentAction()const {return currentGambitAction;}

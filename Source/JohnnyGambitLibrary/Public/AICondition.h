@@ -7,7 +7,8 @@
 #include "AICondition.generated.h"
 
 /**
- * 
+ * GambitAI‚ÌGambit•”•ª
+ * ‚±‚ÌƒNƒ‰ƒX‚ğŒp³‚µ‚½BP‚ÅğŒ‚ğ–‚½‚·‚©‚Ç‚¤‚©”»’è‚ğs‚¤
  */
 UCLASS(Blueprintable, BlueprintType)
 class JOHNNYGAMBITLIBRARY_API UAICondition : public UObject

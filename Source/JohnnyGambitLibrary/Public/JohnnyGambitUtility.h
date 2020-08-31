@@ -7,7 +7,7 @@
 #include "JohnnyGambitUtility.generated.h"
 
 /**
- * 
+ * GambitAI‚ÉŒÀ‚ç‚¸AI‚ÉŠÖ˜A‚·‚é•Ö—˜UtilityƒNƒ‰ƒX
  */
 UCLASS()
 class JOHNNYGAMBITLIBRARY_API UJohnnyGambitUtility : public UBlueprintFunctionLibrary
