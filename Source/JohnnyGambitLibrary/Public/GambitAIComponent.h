@@ -60,13 +60,17 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+	UFUNCTION(BlueprintCallable, Category = "Gambit AI Component")
 	virtual void InitializeAI(class UDataTable* actionList);
 
-	FGambitActionInfo GetCurrentAction()const {return currentGambitAction;}
-
-public:
+	UFUNCTION(BlueprintCallable, Category = "Gambit AI Component")
 	void ThinkAction(const UGambitAIParameter* my, const TArray<class UGambitAIParameter*>& targetArray);
 
+	UFUNCTION(BlueprintCallable, Category = "Gambit AI Component")
+	FName GetCurrentActionID()const { return currentGambitAction.actionID; }
+
+public:
+	FGambitActionInfo GetCurrentAction()const {return currentGambitAction;}
 protected:
 	UPROPERTY()
 	TArray<FGambitActionInfo> actionTable;
