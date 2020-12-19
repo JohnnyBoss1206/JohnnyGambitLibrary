@@ -10,13 +10,14 @@
  * GambitAIで条件判定を行う際のパラメータを保持するクラス
  * このクラスをゲーム内のActorクラスが保持してもらう
  */
-UCLASS()
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class JOHNNYGAMBITLIBRARY_API UGambitAIParameter : public UObject
 {
 	GENERATED_BODY()
 public:
+	UFUNCTION(BlueprintCallable, Category = "Gambit AI Parameter")
 	void SetParameter(const FName& key, const FString& value);
-public:
+
 	UFUNCTION(BlueprintCallable, Category = "Gambit AI Parameter")
 	int GetValueToInt(const FName& key) { return HasKey(key) ? FCString::Strtoi(*parameterMap[key],nullptr,10) : -1; }
 
@@ -28,6 +29,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Gambit AI Parameter")
 	bool HasKey(const FName& key)const { return parameterMap.Contains(key); }
+
+	UFUNCTION(BlueprintCallable, Category = "Gambit AI Parameter")
+	TMap<FName, FString> GetParameterMap()const { return parameterMap; }
+
 protected:
 	UPROPERTY(EditAnywhere, Category = "Gambit AI Parameter")
 	TMap<FName,FString> parameterMap;
