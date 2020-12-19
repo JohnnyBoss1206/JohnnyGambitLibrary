@@ -10,7 +10,7 @@
  * GambitAIで条件判定を行う際のパラメータを保持するクラス
  * このクラスをゲーム内のActorクラスが保持してもらう
  */
-UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
+UCLASS(BlueprintType)
 class JOHNNYGAMBITLIBRARY_API UGambitAIParameter : public UObject
 {
 	GENERATED_BODY()
