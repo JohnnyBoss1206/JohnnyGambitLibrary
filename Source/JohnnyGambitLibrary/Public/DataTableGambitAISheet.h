@@ -27,4 +27,7 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Gambit AI")
 	int weight = 10;
+
+	UPROPERTY(EditAnywhere, Category = "Gambit AI")
+	TSubclassOf<class UAITargetCondition> targetCondition;
 };

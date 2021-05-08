@@ -33,7 +33,16 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Gambit AI Parameter")
 	TMap<FName, FString> GetParameterMap()const { return parameterMap; }
 
+	UFUNCTION(BlueprintCallable, Category = "Gambit AI Parameter")
+	void SetUniqueID(const FName& id){uniqueID = id;}
+
+	UFUNCTION(BlueprintCallable, Category = "Gambit AI Parameter")
+	FName GetUniqueID()const{return uniqueID;}
+
 protected:
 	UPROPERTY(EditAnywhere, Category = "Gambit AI Parameter")
 	TMap<FName,FString> parameterMap;
+
+	UPROPERTY()
+	FName	uniqueID;
 };

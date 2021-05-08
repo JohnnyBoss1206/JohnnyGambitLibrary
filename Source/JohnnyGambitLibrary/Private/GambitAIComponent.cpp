@@ -3,6 +3,7 @@
 
 #include "GambitAIComponent.h"
 #include "AICondition.h"
+#include "AITargetCondition.h"
 #include "DataTableGambitAISheet.h"
 #include "GambitAIParameter.h"
 #include "JohnnyGambitUtility.h"
@@ -42,6 +43,7 @@ void UGambitAIComponent::InitializeAI(UDataTable* actionList)
 			info.actionID = Sheet.ActionID;
 			info.priority = Sheet.priority;
 			info.weight = Sheet.weight;
+			info.targetCondition = NewObject<UAITargetCondition>(Sheet.targetCondition);
 			actionTable.Add(info);
 		});
 	actionTable.Sort([](const FGambitActionInfo& A, const FGambitActionInfo& B) 
@@ -91,4 +93,11 @@ void UGambitAIComponent::ThinkAction(const UGambitAIParameter* my,const TArray<U
 	UJohnnyGambitUtility::AdjustWeight(weightList);
 	int totalWeitght = UJohnnyGambitUtility::GetTotalWeight(weightList);
 	currentGambitAction = UJohnnyGambitUtility::CalcWeightRate(weightList,totalWeitght);
+}
+
+FName UGambitAIComponent::GetTargetID(const UGambitAIParameter* my, const TArray<UGambitAIParameter*>& targetArray)
+{
+	check(currentGambitAction.targetCondition);
+	FName targetID = currentGambitAction.targetCondition->GetGambitTargetID(my,targetArray);
+	return targetID;
 }

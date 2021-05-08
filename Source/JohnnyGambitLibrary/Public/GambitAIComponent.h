@@ -16,6 +16,7 @@ public:
 	FName actionID;
 	int priority = 0;
 	int weight = 0;
+	class UAITargetCondition* targetCondition;
 
 	bool operator==(const FGambitActionInfo& Other)const
 	{
@@ -68,6 +69,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Gambit AI Component")
 	FName GetCurrentActionID()const { return currentGambitAction.actionID; }
+
+	UFUNCTION(BlueprintCallable, Category = "Gambit AI Component")
+	FName GetTargetID(const UGambitAIParameter* my, const TArray<UGambitAIParameter*>& targetArray);
 
 public:
 	FGambitActionInfo GetCurrentAction()const {return currentGambitAction;}
