@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "GambitAIParameter.h"
+#include "GambitPair.h"
 #include "JohnnyGambitUtility.generated.h"
 
 /**
@@ -51,5 +53,73 @@ public:
 			ret = value;
 		}
 		return ret;
+	}
+
+	UFUNCTION(BlueprintCallable, Category = "Gambit AI Utility")
+	static FName CalcWeightRateFromName(const TArray<UGambitPair*>& weightList, int totalWeight)
+	{
+		TArray<TPair<int, FName>> tmpWeightList;
+		for (auto& pairObj : weightList)
+		{
+			TPair<int, FName> newPair;
+			newPair.Key = pairObj->key;
+			newPair.Value = pairObj->valueName;
+			tmpWeightList.Add(newPair);
+		}
+		return CalcWeightRate(tmpWeightList, totalWeight);
+	}
+
+	UFUNCTION(BlueprintCallable, Category = "Gambit AI Utility")
+	static FString CalcWeightRateFromString(const TArray<UGambitPair*>& weightList, int totalWeight)
+	{
+		TArray<TPair<int, FString>> tmpWeightList;
+		for (auto& pairObj : weightList)
+		{
+			TPair<int, FString> newPair;
+			newPair.Key = pairObj->key;
+			newPair.Value = pairObj->valueString;
+			tmpWeightList.Add(newPair);
+		}
+		return CalcWeightRate(tmpWeightList, totalWeight);
+	}
+
+	UFUNCTION(BlueprintCallable, Category = "Gambit AI Utility")
+	static UObject* CalcWeightRateFromObject(const TArray<UGambitPair*>& weightList, int totalWeight)
+	{
+		TArray<TPair<int, UObject*>> tmpWeightList;
+		for (auto& pairObj : weightList)
+		{
+			TPair<int, UObject*> newPair;
+			newPair.Key = pairObj->key;
+			newPair.Value = pairObj->valueObject;
+			tmpWeightList.Add(newPair);
+		}
+		return CalcWeightRate(tmpWeightList, totalWeight);
+	}
+
+	UFUNCTION(BlueprintCallable, Category = "Gambit AI Utility")
+	static int GetTotalWeightForBP(const TArray<UGambitPair*>& weightList)
+	{
+		TArray<TPair<int, FName>> tmpWeightList;//Total値計算なのでValue値はなんでもいい
+		for (auto& pairObj : weightList)
+		{
+			TPair<int, FName> newPair;
+			newPair.Key = pairObj->key;
+			tmpWeightList.Add(newPair);
+		}
+		return GetTotalWeight(tmpWeightList);
+	}
+
+	UFUNCTION(BlueprintCallable, Category = "Gambit AI Utility")
+	static int AdjustWeightForBP(const TArray<UGambitPair*>& weightList)
+	{
+		TArray<TPair<int, FName>> tmpWeightList;//AdjustするだけなのでValue値はなんでもいい
+		for (auto& pairObj : weightList)
+		{
+			TPair<int, FName> newPair;
+			newPair.Key = pairObj->key;
+			tmpWeightList.Add(newPair);
+		}
+		return GetTotalWeight(tmpWeightList);
 	}
 };
